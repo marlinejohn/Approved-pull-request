@@ -1,3 +1,8 @@
+function checkPullRequestApproval(latestCommitTimestamp, reviews) {
+    const approvalReviews = reviews.filter((review) =>
+        review.reviewType === "APPROVAL" && review.timestamp >= latestCommitTimestamp
+    );
+}
 
   const latestCommitTimestamp = Date.now();
   const reviews = [

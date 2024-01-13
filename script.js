@@ -24,7 +24,7 @@ function checkPullRequestApproval(latestCommitTimestamp, reviews) {
     { userId: "user3", timestamp: Date.now() + 35, reviewType: "APPROVAL" },
   ];
   
-checkPullRequestApproval(latestCommitTimestamp, reviews);
+const result = checkPullRequestApproval(latestCommitTimestamp, reviews);
 console.log(result);
   
   

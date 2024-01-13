@@ -2,7 +2,16 @@ function checkPullRequestApproval(latestCommitTimestamp, reviews) {
     const approvalReviews = reviews.filter((review) =>
         review.reviewType === "APPROVAL" && review.timestamp >= latestCommitTimestamp
     );
-    const uniqueUsers = {};
+    const differentUsers = {};
+    for (let i = 0; i < approvalReviews.length; i++) {
+        const review = approvalReviews[i];
+    
+        if (!differentUsers[review.userId]) {
+            differentUsers[review.userId] = true;
+        }
+      }
+    
+      return Object.keys(differentUsers).length >= 2;
 }
 
   const latestCommitTimestamp = Date.now();
@@ -16,5 +25,6 @@ function checkPullRequestApproval(latestCommitTimestamp, reviews) {
   ];
   
 checkPullRequestApproval(latestCommitTimestamp, reviews);
+console.log(result);
   
   
